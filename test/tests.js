@@ -3,10 +3,11 @@ var test = require('tape').test
 var transform = require('../main').transform
 
 test('tag variations', function(t) {
-  t.plan(10)
+  t.plan(11)
   var tagTests = {
     '<br/>': 'h("br")'
   , '<div/>': 'h("div")'
+  , '<div>{Foo()}</div>': 'h("div", [Foo()])'
   , '<div></div>': 'h("div")'
   , '<div>X</div>': 'h("div", ["X"])'
   , '<div>{X}</div>': 'h("div", [X])'
